@@ -1,8 +1,10 @@
 import angular from 'angular';
 import Card from './card/card';
+import Room from './room/room';
 
 let componentModule = angular.module('app.components', [
-  Card
+  Card,
+  Room
 ])
   
 .name;

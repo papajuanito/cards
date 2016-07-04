@@ -1,6 +1,10 @@
 class RoomController {
-  constructor() {
+  constructor($stateParams) {
+  	"ngInject";
     this.name = 'Room';
+
+
+    console.log($stateParams.roomId);
   }
 }
 

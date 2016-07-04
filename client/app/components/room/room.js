@@ -10,7 +10,7 @@ let roomModule = angular.module('room', [
   "ngInject";
   $stateProvider
     .state('room', {
-      url: '/room',
+      url: '/room/:roomId',
       template: '<room></room>'
     });
 })

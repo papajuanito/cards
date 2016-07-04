@@ -2,10 +2,8 @@ class AppController {
 	/**
 	* @param {Deck} deck
 	*/
-	constructor(Deck) {
+	constructor() {
 		"ngInject";
-		this.deck = Deck;
-		console.log(this.deck);
 	}
 }
 
