@@ -1,4 +1,13 @@
 <!-- Place all UI elements intended to be present across all routes in this file -->
-<div class="app">
-  <div ui-view></div>
-</div>
+<section class="cards-app">
+  <section class="header">
+    <h1>Cards Against Humanity</h1>
+    <header class="header-input">
+    </header>
+  </section>
+  <section class="main">
+    <div class="cards-deck">
+      <card _card="card" ng-repeat="card in $ctrl.deck.cards"></card>
+    </div>
+  </section>
+</section>
