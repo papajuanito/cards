@@ -1,44 +1,46 @@
 class RoomController {
 
-  constructor($stateParams, Socket) {
+  constructor($stateParams, Socket, Room) {
   	"ngInject";
-    this.room = 'room-' + $stateParams.roomId;
+    this.roomId = $stateParams.roomId;
     this.players = [];
-    this.socket = Socket;
+    this.Socket = Socket;
+    this.Room = Room;
 
     //connect to socket room;
 
-    console.log(this.room);
+    console.log('here');
 
-
-    this.socket.on('connect', () => {
+    this.Socket.on('connect', () => {
       // this.socket.emit('room')
       this.setEvents();
     });
     
   }
 
+  createRoom(Room) {
+    "ngInject";
+    console.log(Room);
+  }
+
   addPlayer() {
-
-  	console.log('Adding Player1');
-
     const data = {
       player: {
         name: this.newPlayer
       },
-      room: this.room
+      room: this.roomId
     };
 
-  	this.players.push(data.player);
+  	// this.players.push(data.player);
 
-  	this.socket.emit('player-room-connect', data, function() {
+  	this.Socket.emit('player-room-connect', data, function() {
   		console.log('here');
   	});
 
   }
 
   setEvents() {
-  	this.socket.on('player-join', (player) => {
+  	this.Socket.on('player-room-connect', (player) => {
 
   		console.log(player);
 

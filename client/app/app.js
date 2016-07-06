@@ -1,4 +1,5 @@
 import angular from 'angular';
+import ngResource from 'angular-resource';
 import uiRouter from 'angular-ui-router';
 import Components from './components/components';
 import services from './services/services';
@@ -8,7 +9,8 @@ import AppComponent from './app.component';
 
 angular.module('app', [
   Components,
-  services
+  services,
+  ngResource
 ])
 .config(($locationProvider) => {
   "ngInject";
