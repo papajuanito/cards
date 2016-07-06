@@ -1,7 +1,7 @@
 class Socket {
 	constructor($rootScope) {
 		"ngInject";
-		this.socket = io.connect('http://192.168.0.2:3012');
+		this.socket = io.connect('http://localhost:3012');
 		this.$rootScope = $rootScope; 
 	}
 

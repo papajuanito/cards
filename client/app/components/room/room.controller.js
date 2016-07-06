@@ -5,17 +5,25 @@ class RoomController {
     this.roomId = $stateParams.roomId;
     this.players = [];
     this.Socket = Socket;
-    this.Room = Room;
+    this.Room = Room.resource;
 
-    //connect to socket room;
-
-    console.log('here');
+    if(this.roomId) {
+      this.retrieveRoom();
+    }
 
     this.Socket.on('connect', () => {
       // this.socket.emit('room')
       this.setEvents();
     });
     
+  }
+
+  retrieveRoom() {
+    this.Room.get({
+      roomId: this.roomId
+    }, (room) => {
+      this.players = room.players;
+    });
   }
 
   createRoom(Room) {
@@ -45,8 +53,6 @@ class RoomController {
   		console.log(player);
 
   		this.players.push(player);
-
-  		// console.log(this);
   	});
   }
 }
