@@ -1,11 +1,14 @@
 class RoomController {
 
-  constructor($stateParams, Socket, Room) {
+  constructor($stateParams, Socket, Room, Player) {
   	"ngInject";
     this.roomId = $stateParams.roomId;
     this.players = [];
     this.Socket = Socket;
     this.Room = Room.resource;
+    // this.Player = Player.resource;
+
+    this.newPlayer = new Player.resource();
 
     if(this.roomId) {
       this.retrieveRoom();
@@ -15,7 +18,7 @@ class RoomController {
       // this.socket.emit('room')
       this.setEvents();
     });
-    
+
   }
 
   retrieveRoom() {
@@ -32,19 +35,14 @@ class RoomController {
   }
 
   addPlayer() {
-    const data = {
-      player: {
-        name: this.newPlayer
-      },
-      room: this.roomId
-    };
+    this.newPlayer.$save({
+      roomId: this.roomId
+    }, player => {
 
-  	// this.players.push(data.player);
+      if(!player._id) return;
 
-  	this.Socket.emit('player-room-connect', data, function() {
-  		console.log('here');
-  	});
-
+      this.Socket.emit('player-room-connect', player);
+    });
   }
 
   setEvents() {
