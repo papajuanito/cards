@@ -79,6 +79,10 @@ class RoomController {
   		this.players.push(player);
       console.log(this.players);
   	});
+
+    this.Socket.on('player-room-closed', (room) => {
+      console.log('closed', room);
+    })
   }
 }
 
