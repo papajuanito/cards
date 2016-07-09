@@ -16,6 +16,21 @@ class RoomController {
       this.retrieveRoom();
     }
 
+    const playerId = sessionStorage.getItem('player');
+
+    if(playerId) {
+      Player.resource.get({
+        roomId: this.id,
+        playerId: playerId
+      }, (player) => {
+        this.player = player;
+        this.Socket.emit('player-room-connect', {
+          player: this.player,
+          broadcast: false
+        });
+      });
+    }
+
     this.Socket.on('connect', () => {
       // this.socket.emit('room')
       this.setEvents();
@@ -29,13 +44,6 @@ class RoomController {
     }, (room) => {
       this.size = room.size;
       this.players = room.players;
-
-      this.missing = new Array(this.size - this.players.length);
-
-      console.log(this.missing);
-
-      console.log(room);
-
     }, (response) => {
       this.$state.go('home');
     });
@@ -53,14 +61,23 @@ class RoomController {
 
       if(!player._id) return;
 
-      this.Socket.emit('player-room-connect', player);
+      this.player = player;
+
+
+
+      sessionStorage.setItem('player', this.player._id);
+
+      this.Socket.emit('player-room-connect', {
+        player: this.player,
+        broadcast: true
+      });
     });
   }
 
   setEvents() {
   	this.Socket.on('player-room-connect', (player) => {
   		this.players.push(player);
-      this.missing = new Array(this.size - this.players.length);
+      console.log(this.players);
   	});
   }
 }

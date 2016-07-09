@@ -1,6 +1,6 @@
 <div id="room" class="container">
 	<div class="row vertical-position">
-		<ul class="player-connected-list list-unstyled">
+		<!--ul class="player-connected-list list-unstyled">
 			<li ng-repeat="player in vm.players">
 				<i class="fa fa-check" aria-hidden="true"></i>
 				<p>{{player.name}}</p>				
@@ -9,8 +9,12 @@
 				<i class="fa fa-times" aria-hidden="true"></i>
 				<p>Waiting...</p>
 			</li>
-		</ul>
-		<form class="player-connect-form" ng-submit="vm.addPlayer()">
+		</ul-->
+		<p class="player-count text-right" ng-show="vm.size">
+			{{vm.players.length}} / {{vm.size}} players
+		</p>
+		<p class="text-right" ng-if="vm.player">{{vm.player.name + ' -'}} Waiting for other players.</p>
+		<form class="player-connect-form" ng-submit="vm.addPlayer()" ng-if="!vm.player && vm.players.length < vm.size">
 		  <div class="form-group">		    
 		    <input type="text" class="form-control" id="new_player" placeholder="New Player Name" ng-model="vm.newPlayer.name">
 		  </div>
