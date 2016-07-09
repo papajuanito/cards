@@ -10,7 +10,7 @@ class HomeController {
 		let room = new this.Room();
 
 		room.name = "test room";
-		room.size = 8;
+		room.size = 2;
 
 		room.$save((room) => {
 			console.log(room._id);

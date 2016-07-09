@@ -24,10 +24,6 @@ class RoomController {
         playerId: playerId
       }, (player) => {
         this.player = player;
-        this.Socket.emit('player-room-connect', {
-          player: this.player,
-          broadcast: false
-        });
       });
     }
 
@@ -45,6 +41,10 @@ class RoomController {
       this.size = room.size;
       this.players = room.players;
       this.status = room.status;
+      this.Socket.emit('room-connect', {
+        room: this.id
+      });
+
     }, (response) => {
       this.$state.go('home');
     });
@@ -64,8 +64,6 @@ class RoomController {
 
       this.player = player;
 
-
-
       sessionStorage.setItem('player', this.player._id);
 
       this.Socket.emit('player-room-connect', {
@@ -82,6 +80,7 @@ class RoomController {
   	});
 
     this.Socket.on('player-room-closed', (room) => {
+      console.log('Start play', 'Room Closed');
       this.status = room.status;
     })
   }
