@@ -1,63 +1,44 @@
 #room	
 	color: #FFFFFF
+	height: 100%
 	
-	.room-header		
-		padding: 0 20px
+	.player-connected-list
 		
-		h2
-			padding: 15px 0
-			margin: 0
-			margin-bottom: 10px
-			border-bottom: 1px solid #FFFFFF
-			font-weight: bold
-			
-		.clock
-			font-size: 25px;
-	
+		text-align: right;
 
-	.room-body
-
-		#new-player-form
+		li
+			display: inline-block;
+			margin-right: 50px;
 			text-align: center;
 			
-			margin-top: 100px;
-			// position: absolute;
-			// top: 50%;
-			// transform: translateY(-50%);
+			&.last
+				margin-right: 0;
 			
-			// width: 100%;
-
-			.new-player
+			i
+				font-size: 60px;
+			
+			p
+				font-size: 25px;
+				font-weight: bold;
+				
+	.player-connect-form
+		
+		float: right;
+		text-align: right;
+		
+		.form-group
+			
+			min-width: 300px;
+		
+			.form-control
 				background: none;
+				border: none;
+				border-bottom: 2px solid #FFFFFF;
 				border-radius: 0;
-				border: none;
-				border-bottom: 1px solid #FFFFFF;
-				padding: 10px;
-				width: 100%;
-				
-			.new-player::-webkit-input-placeholder
-				color: #FFFFFF;
-				text-transform: uppercase;
-
-			.new-player:-moz-placeholder 
-				color: #FFFFFF;
-				text-transform: uppercase;
-
-			.new-player::-moz-placeholder
-				color: #FFFFFF;
-				text-transform: uppercase;
-
-			.new-player:-ms-input-placeholder
-				color: #FFFFFF;
-				text-transform: uppercase;
 			
-			.btn
-				background: none;
-				color: #FFFFFF;
-				text-transform: uppercase;
-				border: none;
-				
-		.card-body
-			font-size: 30px
-			font-weight: bold
-			padding: 100px 5px
+		.btn
+			border: none;
+			background: none;
+			color: #FFFFFF;
+			text-transform: uppercase;
+			padding-right: 0;
