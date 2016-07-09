@@ -13,6 +13,7 @@
 		<p class="player-count text-right" ng-show="vm.size">
 			{{vm.players.length}} / {{vm.size}} players
 		</p>
+		{{vm.status}}
 		<p class="text-right" ng-if="vm.player">{{vm.player.name + ' -'}} Waiting for other players.</p>
 		<form class="player-connect-form" ng-submit="vm.addPlayer()" ng-if="!vm.player && vm.players.length < vm.size">
 		  <div class="form-group">		    

@@ -44,6 +44,7 @@ class RoomController {
     }, (room) => {
       this.size = room.size;
       this.players = room.players;
+      this.status = room.status;
     }, (response) => {
       this.$state.go('home');
     });
@@ -81,7 +82,7 @@ class RoomController {
   	});
 
     this.Socket.on('player-room-closed', (room) => {
-      console.log('closed', room);
+      this.status = room.status;
     })
   }
 }
