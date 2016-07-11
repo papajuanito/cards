@@ -6,9 +6,9 @@ class CardController {
 
 	onRemoveClick() {
 
-		console.log('here');
+		console.log(this._card);
 
-		this.deck.remove(this._card);
+		// this.deck.remove(this._card);
 	}
 }
 

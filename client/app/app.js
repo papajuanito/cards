@@ -2,14 +2,15 @@ import angular from 'angular';
 import ngResource from 'angular-resource';
 import uiRouter from 'angular-ui-router';
 import Components from './components/components';
-import services from './services/services';
+import Services from './services/services';
+
 import 'normalize.css';
 
 import AppComponent from './app.component';
 
 angular.module('app', [
   Components,
-  services,
+  Services,
   ngResource
 ])
 .config(($locationProvider) => {

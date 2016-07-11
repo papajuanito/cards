@@ -1,5 +1,5 @@
 <div id="room" class="container">
-	<div class="row vertical-position">
+	<div class="row vertical-position" ng-show="vm.status == 'open'">
 		<!--ul class="player-connected-list list-unstyled">
 			<li ng-repeat="player in vm.players">
 				<i class="fa fa-check" aria-hidden="true"></i>
@@ -10,16 +10,22 @@
 				<p>Waiting...</p>
 			</li>
 		</ul-->
-		<p class="player-count text-right" ng-show="vm.size">
-			{{vm.players.length}} / {{vm.size}} players
-		</p>
-		{{vm.status}}
-		<p class="text-right" ng-if="vm.player">{{vm.player.name + ' -'}} Waiting for other players.</p>
-		<form class="player-connect-form" ng-submit="vm.addPlayer()" ng-if="!vm.player && vm.players.length < vm.size">
-		  <div class="form-group">		    
-		    <input type="text" class="form-control" id="new_player" placeholder="New Player Name" ng-model="vm.newPlayer.name">
-		  </div>
-		  <button type="submit" class="btn btn-default">Submit</button>
-		</form>
+		<div class="col-md-12">
+			<p class="player-count text-right" ng-show="vm.size">
+				{{vm.players.length}} / {{vm.size}} players
+			</p>
+			<p class="text-right" ng-if="vm.player">{{vm.player.name + ' -'}} Waiting for other players.</p>
+			<form class="player-connect-form" ng-submit="vm.addPlayer()" ng-if="!vm.player && vm.players.length < vm.size">
+			  <div class="form-group">		    
+			    <input type="text" class="form-control" id="new_player" placeholder="New Player Name" ng-model="vm.newPlayer.name">
+			  </div>
+			  <button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>		
+	</div>
+
+	<div class="row vertical-position" ng-show="vm.status == 'closed'">
+		<card _card="card" ng-repeat="card in vm.player.deck"></card>
+		<slick></slick>
 	</div>
 </div>
