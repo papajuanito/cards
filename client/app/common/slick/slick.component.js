@@ -63,7 +63,23 @@ export default function($timeout) {
 				slidesToShow: scope.slidesToShow != null ? parseInt(scope.slidesToShow, 10) : 1,
 				slidesToScroll: scope.slidesToScroll != null ? parseInt(scope.slidesToScroll, 10) : 1,
 				centerMode: scope.centerMode === 'true',
-				arrows: scope.arrows !== 'false'
+				arrows: scope.arrows !== 'false',
+				responsive: [
+				    {
+						breakpoint: 768,
+						settings: {
+							centerMode: true,
+							slidesToShow: 3
+						}
+				    },
+				    {
+						breakpoint: 480,
+						settings: {
+							centerMode: true,
+							slidesToShow: 1
+						}
+				    }
+				]
 			};
 
 			console.log(config);
