@@ -1,5 +1,5 @@
 <div id="room" class="container">
-	<div class="row vertical-position" ng-show="vm.status == 'open'">
+	<div class="row vertical-position" ng-show="vm.status == 'ope1n'">
 		<!--ul class="player-connected-list list-unstyled">
 			<li ng-repeat="player in vm.players">
 				<i class="fa fa-check" aria-hidden="true"></i>
@@ -24,8 +24,9 @@
 		</div>		
 	</div>
 
-	<div class="row vertical-position" ng-show="vm.status == 'closed'">
-		<card _card="card" ng-repeat="card in vm.player.deck"></card>
-		<slick></slick>
+	<div class="row vertical-position" ng-show="vm.status == 'open'">
+		<slick infinite=true slides-to-show=1 center-mode=true arrows=false>
+			<card _card="card" ng-repeat="card in vm.player.deck"></card>
+		</slick>
 	</div>
 </div>

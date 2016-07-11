@@ -10,7 +10,8 @@ let cardComponent = {
   },
   template,
   controller,
-  controllerAs: 'vm'
+  controllerAs: 'vm',
+  replace: true
 };
 
 export default cardComponent;
